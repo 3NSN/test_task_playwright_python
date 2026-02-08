@@ -13,3 +13,7 @@ test-results/
 playwright-report/
 test-artifacts/
 .env
+.idea/
+allure-report/
+allure-results/
+allure_results/
