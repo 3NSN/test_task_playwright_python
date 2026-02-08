@@ -9,6 +9,7 @@ dependencies = [
     "pytest>=8.0.0",
     "pytest-playwright>=0.4.0",
     "pytest-xdist>=3.5.0"
+    "allure-pytest>=2.13.0"
 ]
 
 [tool.uv]
@@ -19,7 +20,7 @@ dev-dependencies = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "--browser chromium --slowmo 500 -n auto"
+addopts = "--browser chromium --slowmo 500 -n auto --alluredir=allure-results --screenshot=only-on-failure"
 testpaths = ["tests"]
 
 [tool.ruff]
