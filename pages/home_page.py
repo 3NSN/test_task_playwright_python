@@ -9,7 +9,7 @@ from pages.content_page import ContentPage
 class HomePage(Page):
     URL = BASE_URL
 
-    ACCEPT_ALL_COOKIES_BTN = "Accept All Cookies"
+    COOKIE_BTN_PATTERN = re.compile(r"Accept All Cookies|Close", re.IGNORECASE)
     PRIVACY_MODAL = "notice"
     BROWSE_NOW_BTN = "Browse Now"
 
@@ -19,16 +19,19 @@ class HomePage(Page):
 
     def load(self, skip_privacy_dialog: bool = True):
         self.page.goto(self.URL)
-
         if skip_privacy_dialog:
             try:
                 privacy_modal = self.page.get_by_test_id(self.PRIVACY_MODAL)
-                accept_btn = privacy_modal.get_by_label(self.ACCEPT_ALL_COOKIES_BTN)
-                accept_btn.wait_for(state="visible", timeout=3000)
-                accept_btn.click()
-                expect(privacy_modal).not_to_be_visible()
-            except Exception:
-                print("GDPR Banner not found or skipped.")
+                accept_btn = privacy_modal.get_by_role("button", name=self.COOKIE_BTN_PATTERN)
+
+                if accept_btn.is_visible(timeout=3000):
+                    accept_btn.click()
+                    expect(privacy_modal).not_to_be_visible()
+
+            except TimeoutError:
+                print("Banner not found or skipped.")
+            except Exception as e:
+                print(f"Warning during cookie handling: {e}")
 
 
     def open_browse_now(self):

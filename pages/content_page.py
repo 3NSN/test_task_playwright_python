@@ -9,13 +9,13 @@ class ContentPage(BasePage):
 
     @property
     def wallpaper_btn_header(self):
-        return self.page.locator(self.WALLPAPER_BTN_HEADER).first
+        return self.page.get_by_role("link", name="Wallpapers", exact=True).first
 
     @property
     def search_input(self) -> Locator:
         return self.page.locator(self.SEARCH_INPUT).last
 
-    def type_keyword(self, keyword: str):
+    def type_keyword_and_search(self, keyword: str):
         self.search_input.fill(keyword)
         self.page.keyboard.press("Enter")
 
