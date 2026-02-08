@@ -1,7 +1,7 @@
 # UI Automation Framework
 
 test task
-Contains 3 test cases, and demonstrate POMf 
+Contains 3 test cases, and demonstrate POM
 
 ## Tech Stack
 
