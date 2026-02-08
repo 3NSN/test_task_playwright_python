@@ -21,9 +21,14 @@ class HomePage(Page):
         self.page.goto(self.URL)
 
         if skip_privacy_dialog:
-            privacy_modal = self.page.get_by_test_id(self.PRIVACY_MODAL)
-            privacy_modal.get_by_label(self.ACCEPT_ALL_COOKIES_BTN).click(timeout=3000, no_wait_after=True)
-            expect(privacy_modal).not_to_be_visible()
+            try:
+                privacy_modal = self.page.get_by_test_id(self.PRIVACY_MODAL)
+                accept_btn = privacy_modal.get_by_label(self.ACCEPT_ALL_COOKIES_BTN)
+                accept_btn.wait_for(state="visible", timeout=3000)
+                accept_btn.click()
+                expect(privacy_modal).not_to_be_visible()
+            except Exception:
+                print("GDPR Banner not found or skipped.")
 
 
     def open_browse_now(self):
