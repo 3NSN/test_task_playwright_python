@@ -6,7 +6,7 @@ setup:
 	uv pip install tox tox-uv
 
 test:
-	uv run tox -e py311
+	uv run tox -- --headed
 
 lint:
 	uv run tox -e lint

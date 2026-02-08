@@ -1,7 +1,3 @@
-import re
-import os
-from playwright.sync_api import expect
-import pytest
 from constants import CategoryNames
 from helpers.assert_utils import verify_download
 

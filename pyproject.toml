@@ -19,7 +19,7 @@ dev-dependencies = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "--headed --browser chromium --slowmo 500 -n 3"
+addopts = "--browser chromium --slowmo 500 -n auto"
 testpaths = ["tests"]
 
 [tool.ruff]
