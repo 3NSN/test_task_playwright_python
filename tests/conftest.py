@@ -28,11 +28,3 @@ def content_page(base_page):
 @pytest.fixture(scope="function")
 def wallpaper_page(base_page):
     return WallpaperPage(base_page)
-
-@pytest.fixture(scope="session")
-def browser_type_launch_args():
-    return {
-        "headless": False,
-        "slow_mo": 1000
-
-    }

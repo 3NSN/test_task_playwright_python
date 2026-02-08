@@ -1,5 +1,4 @@
 import enum
-from enum import StrEnum
 
 BASE_URL="https://www.zedge.net/"
 
