@@ -1,6 +1,7 @@
 .PHONY: setup test lint clean
 
 setup:
+	@which uv > /dev/null || python3 -m pip install uv
 	uv sync --dev
 	uv run pre-commit install
 
