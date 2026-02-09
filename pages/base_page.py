@@ -1,12 +1,13 @@
 from playwright.sync_api import Page, expect
 import re
 
+
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
 
     def verify_search_results_url(self, keyword: str):
-        pattern = re.compile(fr".*wallpapers\?keyword={keyword}")
+        pattern = re.compile(rf".*wallpapers\?keyword={keyword}")
         expect(self.page).to_have_url(pattern)
 
     def verify_search_header(self, keyword: str):

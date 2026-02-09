@@ -9,7 +9,6 @@ class WallpaperPage(BasePage):
     DOWNLOAD_BTN_NAME = "Download"
     MODAL_TEXT = "Preparing your download"
 
-
     @property
     def content_items(self) -> Locator:
         return self.page.locator(self.CONTENT_ITEMS)

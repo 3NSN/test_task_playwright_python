@@ -16,7 +16,6 @@ class HomePage(Page):
     def __init__(self, page: Page):
         self.page = page
 
-
     def load(self, skip_privacy_dialog: bool = True):
         self.page.goto(self.URL)
         if skip_privacy_dialog:
@@ -33,9 +32,8 @@ class HomePage(Page):
             except Exception as e:
                 print(f"Warning during cookie handling: {e}")
 
-
     def open_browse_now(self):
         browse_now = self.page.get_by_text(self.BROWSE_NOW_BTN)
         browse_now.click()
         self.page.wait_for_load_state()
-        expect(self.page).to_have_url(re.compile(fr".*{ContentPage.URL_PATH}"))
+        expect(self.page).to_have_url(re.compile(rf".*{ContentPage.URL_PATH}"))

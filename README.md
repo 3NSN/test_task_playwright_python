@@ -34,8 +34,13 @@ If `make` is installed, use the following commands:
     ```bash
     make test
     ```
+3.  **Run Tests with UI**
+    Executes tests via `tox` in an isolated environment. This includes automatic browser installation.
+    ```bash
+    make test-ui
+    ```
 
-3.  **Lint Code**
+4. **Lint Code**
     Checks code style using `ruff`.
     ```bash
     make lint
@@ -53,5 +58,5 @@ If `make` is not available, use `uv` directly:
 2.  **Run Tests**
     This command creates the environment and runs the tests using the project's configuration.
     ```bash
-    uv run tox
+    uv run tox -- --headed
     ```

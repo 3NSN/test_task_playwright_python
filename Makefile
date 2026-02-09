@@ -1,11 +1,13 @@
 .PHONY: setup test lint clean
 
 setup:
-	pip install uv
-	uv venv
-	uv pip install tox tox-uv
+	uv sync --dev
+	uv run pre-commit install
 
 test:
+	uv run tox
+
+test-ui:
 	uv run tox -- --headed
 
 lint:
